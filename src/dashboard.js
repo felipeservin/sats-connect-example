@@ -18,7 +18,7 @@ class Dashboard extends React.Component {
         purposes: ["ordinals", "payment"],
         message: "Address for receiving Ordinals",
         network: {
-          type: "Mainnet",
+          type: "Testnet",
         },
       },
       onFinish: (response) => {
@@ -91,27 +91,19 @@ class Dashboard extends React.Component {
               style={{ height: 30, width: 180 }}
               onClick={this.onConnectClick}
             >
-              Connect
+              {this.state.ordinalsAddress ? (
+                <>
+               {`${this.state.ordinalsAddress.substring(0, 4)}...${this.state.ordinalsAddress.substring(this.state.ordinalsAddress.length - 4)}`}
+                </>
+              ) : (
+                <>Connect</>
+              )}
+
+
             </button>
           </div>
 
-          <div style={{ background: "lightgray", padding: 30, margin: 10 }}>
-            <button
-              style={{ height: 30, width: 180 }}
-              onClick={this.onSignTransactionClick}
-            >
-              Sign Transaction
-            </button>
-          </div>
-
-          <div style={{ background: "lightgray", padding: 30, margin: 10 }}>
-            <button
-              style={{ height: 30, width: 180 }}
-              onClick={this.onSignMessageClick}
-            >
-              Sign message
-            </button>
-          </div>
+        
           <br />
         </div>
       </div>
